@@ -61,3 +61,18 @@ function listarFabricante(PDO $conexao, int $idFabricante):array {
       
    }
 }
+
+//Exercicio
+
+function atualizarFabricante (PDO $conexao, int $idFabricante, string $nome):void {
+
+   $sql = "UPDATE fabricantes SET nome = 'Renner' WHERE id =13";
+
+   try {
+
+      $consulta = $conexao->prepare($sql);
+      
+   } catch (Exception $erro) {
+ 
+   }
+}
