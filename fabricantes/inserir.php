@@ -7,7 +7,7 @@ if (isset($_POST['inserir'])) {
 
     //Capturando o nome digitado do novo fabricante
     $nome = filter_input(
-        INPUT_POST, " nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS
+        INPUT_POST, "nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS
     );
 
     //Inserindo o novo fabricante através de uma nova função
