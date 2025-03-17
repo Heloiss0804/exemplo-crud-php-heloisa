@@ -46,7 +46,9 @@ $quantidade = count($listaDeFabricantes);
                     <td><?= $fabricante["id"] ?></td>
                     <td><?= $fabricante["nome"]?> </td>
                     <td>
-                        <a href="atualizar.php">Editar</a>
+                        <!-- configurando o link DINÂMICO
+                         Passamos um parâmetro de URL para a página atualizar.php, neste caso, o parâmetro chamado "id" contendo valor do id do fabrincante a ser editado. -->
+                        <a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a>
                     </td>
                 </tr>
                 <?php } ?>
