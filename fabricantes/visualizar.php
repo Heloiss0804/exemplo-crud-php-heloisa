@@ -35,6 +35,7 @@ $quantidade = count($listaDeFabricantes);
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
+                    <th>Operações</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +45,9 @@ $quantidade = count($listaDeFabricantes);
                 <tr>
                     <td><?= $fabricante["id"] ?></td>
                     <td><?= $fabricante["nome"]?> </td>
+                    <td>
+                        <a href="atualizar.php">Editar</a>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
