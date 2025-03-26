@@ -1,25 +1,29 @@
 <?php
-require_once"../src/funcoes-fabricantes.php";
+require_once "../src/funcoes-fabricantes.php";
 
-/* Obtendo o valor do parâmetro via URL */
+/* Obtendo o valor do parâmetro via URL - links dinâmico*/
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 /* Chamando a função para carregar os dados de um fabricante */
-$fabricante = listarFabricante($conexao, $id);
+$fabricante = listarUmFabricante($conexao, $id);
 
 //Verificando se o formulário de atualização foi acionado
-if(isset($_POST['atualizar'])){
-    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS)
 
-    //Exercício!Implemente a função para atualizar o nome do fabricante
+if (isset($_POST['atualizar'])) {
+    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
 
+    /* Exercício! Implemente a função para atualizar o nome do fabricante */
     atualizarFabricante($conexao, $id, $nome);
+
 
     header("location:visualizar.php");
     exit;
 
+
 }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,13 +41,16 @@ if(isset($_POST['atualizar'])){
         <hr>
 
         <form action="" method="post" class="w-25">
+            <!-- Campo oculto (hidden): o formulário/servidor "sabe"do valor, mas não mostra para o usuário -->
 
-        <!-- Campo oculto (hidden): o formulário/servidor "sabe" do valor, mas não mostra para o usuário -->
-        <input type="hidden" name="id" value="<?=$fabricante?>">
+            <input type="hidden" name="id" value="<?=$fabricante['nome']?>">
 
             <div class="mb-3">
+
                 <label for="nome" class="form-label">Nome:</label>
-                <input value="<?=$fabricante['nome']?>" class="form-control" required type="text" name="nome" id="nome">
+                <!-- Para aparecer o nome do fabricante incluir depois do input VALUE com php -->
+                <input value="<?=$fabricante['nome']?>"
+                 class="form-control" required type="text" name="nome" id="nome">
             </div>
             <button class="btn btn-warning" type="submit" name="atualizar">
                 Atualizar fabricante</button>

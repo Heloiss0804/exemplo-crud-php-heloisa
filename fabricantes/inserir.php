@@ -1,24 +1,27 @@
 <?php
-// Verificando se o formúlario foi acionado
-if (isset($_POST['inserir'])) {
+/*Verificando se o formulário foi acionado
+ISSET - foi definido?*/
 
-    // Acessando as funções do CRUD de fabricantes
-  require_once "../src/funcoes-fabricantes.php";
+if( isset($_POST['inserir']) ){
 
-    //Capturando o nome digitado do novo fabricante
-    $nome = filter_input(
-        INPUT_POST, "nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS
-    );
+  //Acessando as funções do CRUD de Fabricantes
+  require_once "../src/funcoes-fabricantes.php"; 
 
-    //Inserindo o novo fabricante através de uma nova função
-    inserirFabricantes($conexao, $nome);
+  //Capturando o nome digitado do novo fabricante
+  $nome = filter_input(
+     INPUT_POST, "nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    //metodo fomilario, name do campo, constante de filtro
 
-    //Redirecionando para a visualizar atualizada
+    //Inserindo o novo fabricante através de uma função
+    inserirFabricante($conexao, $nome);
+    /*Redirecionando para a Visualização atualizada*/ 
     header("location:visualizar.php");
-    exit; 
+    exit;
 }
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

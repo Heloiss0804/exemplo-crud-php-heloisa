@@ -1,13 +1,16 @@
-<?php
-//Importando as funções de Fabricantes 
-require_once"../src/funcoes-fabricantes.php";
+<?php 
 
-//Chamando a função responsável por carregar os dados dos Fabricantes
+/*Acessando as funções de fabricantes */
+require_once "../src/funcoes-fabricantes.php";
+
+/* Chamando a função responsável por carregar os dados dos fabricantes*/
 $listaDeFabricantes = listarFabricantes($conexao);
 
-// Contando os elementos/registros
+/*Contando os elementos/registros */
 $quantidade = count($listaDeFabricantes);
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,19 +43,19 @@ $quantidade = count($listaDeFabricantes);
             </thead>
             <tbody>
 
-<?php
- foreach($listaDeFabricantes as $fabricante) {  ?>        
+<?php foreach($listaDeFabricantes as $fabricante) { ?>
                 <tr>
-                    <td><?= $fabricante["id"] ?></td>
-                    <td><?= $fabricante["nome"]?> </td>
+                    <td> <?=$fabricante["id"]?> </td>
+                    <td> <?=$fabricante["nome"]?> </td>
                     <td>
-                        <!-- configurando o link DINÂMICO
-                         Passamos um parâmetro de URL para a página atualizar.php, neste caso, o parâmetro chamado "id" contendo valor do id do fabrincante a ser editado. -->
-                        <a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a>
+                        <!-- Configurando o link DINÂMICO
+                         Passamos um parâmetro de URL para a página atualizar.php, Neste caso, o parâmetro chamado "id" contendo o valor do id do fabricante a ser editado. -->
+                        <a class="btn btn-warning btn-sm" href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a> 
+                        <a class="btn btn-danger btn-sm"  href="excluir.php?id=<?=$fabricante['id']?>">Excluir</a> 
                     </td>
                 </tr>
-                <?php } ?>
-            </tbody>
+<?php    } ?>
+            </tbody> 
         </table>
     </div>
 

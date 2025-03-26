@@ -1,3 +1,22 @@
+<?php
+
+/*Acessando as funções de fabricantes */
+require_once "../src/funcoes-fabricantes.php";
+
+/* Obtendo o valor do parâmetro via URL - links dinâmico*/
+$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+
+// verificando se houve o SIM para excluir
+if(isset($_GET['confirmar-exclusao'])){
+   excluirFabricante($conexao, $id);
+   header("location:visualizar.php");
+   exit;
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,7 +34,10 @@
         <p> Deseja realmente excluir este fabricante?</p>
         
         <a href="visualizar.php" class="btn btn-secondary">Não</a>
-        <a href="" class="btn btn-danger">Sim</a>        
+
+        <!-- colocando dois parametro para ID no botao SIM
+         paramentro ID & contatena e parametro para o SIM -->
+        <a href="?id=<?=$id?>&confirmar-exclusao" class="btn btn-danger">Sim</a>       
     </div>
 
 </div>

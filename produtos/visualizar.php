@@ -1,3 +1,14 @@
+<?php 
+require_once"../src/funcoes-produtos.php";
+
+$listaDeProdutos = listarProdutos($conexao);
+
+$quantidade = count($listaDeProdutos);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -18,7 +29,22 @@
         <p><a class="btn btn-primary btn-sm" href="inserir.php">Inserir novo produto</a></p>
 
 
+
+        <div class="row g-1">
+
+<?php foreach ($listaDeProdutos as $produto){?>
+            <div class="col-sm-6">
+                <article class="bg-body-secondary p-2">
+                    <h3>Nome do produto <?=$produto["nome"]?></h3>
+                    <h4>Fabricante do produto <?=$produto["fabricante_id"]?></h4>
+                    <p><b>Preço: R$  <?=$produto["preco"]?> </b> </p>
+                    <p><b>Quantidade: <?=$produto["quantidade"]?> </b></p>
+                </article>
+            </div>
+<?php } ?>
+        </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
