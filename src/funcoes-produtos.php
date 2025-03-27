@@ -23,3 +23,9 @@ function listarProdutos(PDO $conexao):array {
   }
 
 }
+
+
+function inserirProduto(PDO $conexao, string $nome, float $preco, int $quantidade, int $idFabricante, string $descricao):void {
+
+
+}
