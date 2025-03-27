@@ -1,7 +1,30 @@
 <?php
 require_once "../src/funcoes-fabricantes.php";
+require_once "../src/funcoes-produtos.php";
+$listaDeFabricantes = listarFabricantes($conexao);
 
-$listaDeFabricantes = listarFabricantes($conexao)
+if (isset($_POST["inserir"])){
+    // Capturar/sanitizar os dados
+    $nome = filter_input(
+        INPUT_POST, "nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $preco = filter_input(
+        INPUT_POST, "preco", FILTER_SANITIZE_FULL_NUMBER_FLOAT);
+    $quantidade= filter_input(
+            INPUT_POST, "quantidade", FILTER_FLAG_ALLOW_FRACTION);
+    $fabricante = filter_input( 
+            INPUT_POST, "fabricante",FILTER_SANITIZE_FULL_NUMBER_INT);     
+    $descricao = filter_input(
+                INPUT_POST, "descricao", FILTER_SANITIZE_FULL_SPECIAL_CHARS);   
+
+
+    // Chamar a função responsável por inserir o produto e passar os parâmetros
+        inserirProduto($conexao, $nome, $preco, $quantidade, $fabricante, $descricao);
+
+    
+    // Por fim, redirecionar para visualização dos produtos
+    header("localition:visualizar.php");
+    exit;
+}
 
 ?>
 <!DOCTYPE html>

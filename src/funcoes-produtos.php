@@ -25,7 +25,19 @@ function listarProdutos(PDO $conexao):array {
 }
 
 
-function inserirProduto(PDO $conexao, string $nome, float $preco, int $quantidade, int $idFabricante, string $descricao):void {
+function inserirProduto(PDO $conexao, string $nome, float $preco, int $quantidade, int $idFabricante, string $descricao):void { 
+  $sql = 
+  "INSERT INTO produtos(nome,preco,quantidade,fabricante,descricao) VALUES (:nome, :preco, :quantidade, :fabricante, :descricao)";
+
+      try{
+        $consulta = $conexao->prepare($sql);
+        $conexao ->bindValue (":nome") 
+
+      }
+
+      catch{}
+
+
 
 
 }
