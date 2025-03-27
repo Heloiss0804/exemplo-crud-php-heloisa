@@ -1,5 +1,6 @@
 <?php 
 require_once"../src/funcoes-produtos.php";
+require_once"../src/funcoes-ultilitarias.php";
 
 $listaDeProdutos = listarProdutos($conexao);
 
@@ -37,7 +38,7 @@ $quantidade = count($listaDeProdutos);
                 <article class="bg-body-secondary p-2">
                     <h3>Nome do produto <?=$produto["produto"]?></h3>
                     <h4>Fabricante do produto <?=$produto["fabricante"]?></h4>
-                    <p><b>Preço: R$  <?=$produto["preco"]?> </b> </p>
+                    <p><b>Preço: R$  <?=formatarPreco($produto["preco"])?> </b> </p>
                     <p><b>Quantidade: <?=$produto["quantidade"]?> </b></p>
                 </article>
             </div>
