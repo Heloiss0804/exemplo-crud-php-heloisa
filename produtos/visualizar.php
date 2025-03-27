@@ -35,8 +35,8 @@ $quantidade = count($listaDeProdutos);
 <?php foreach ($listaDeProdutos as $produto){?>
             <div class="col-sm-6">
                 <article class="bg-body-secondary p-2">
-                    <h3>Nome do produto <?=$produto["nome"]?></h3>
-                    <h4>Fabricante do produto <?=$produto["fabricante_id"]?></h4>
+                    <h3>Nome do produto <?=$produto["produto"]?></h3>
+                    <h4>Fabricante do produto <?=$produto["fabricante"]?></h4>
                     <p><b>Preço: R$  <?=$produto["preco"]?> </b> </p>
                     <p><b>Quantidade: <?=$produto["quantidade"]?> </b></p>
                 </article>
