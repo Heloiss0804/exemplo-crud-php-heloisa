@@ -40,6 +40,7 @@ $quantidade = count($listaDeProdutos);
                     <h4>Fabricante do produto <?=$produto["fabricante"]?></h4>
                     <p><b>Preço: R$  <?=formatarPreco($produto["preco"])?> </b> </p>
                     <p><b>Quantidade: <?=$produto["quantidade"]?> </b></p>
+                    <p><b>Total:</b><?=formatarPreco($produto["preco"] * $produto["quantidade"])?></p>
                 </article>
             </div>
 <?php } ?>
