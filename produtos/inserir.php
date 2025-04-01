@@ -11,16 +11,17 @@ if (isset($_POST["inserir"])){
         INPUT_POST, "preco", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $quantidade= filter_input(
             INPUT_POST, "quantidade", FILTER_SANITIZE_NUMBER_INT);
+
+  //Obs.:lembre-se que capturamos na verdade o value ( que na prática é o id do fabricante)
     $fabricante = filter_input( 
-            INPUT_POST, "fabricante",FILTER_SANITIZE_NUMBER_INT);     
+            INPUT_POST, "fabricante",FILTER_SANITIZE_NUMBER_INT);   
+
     $descricao = filter_input(
                 INPUT_POST, "descricao", FILTER_SANITIZE_FULL_SPECIAL_CHARS);   
-
 
     // Chamar a função responsável por inserir o produto e passar os parâmetros
         inserirProduto($conexao, $nome, $preco, $quantidade, $fabricante, $descricao);
 
-    
     // Por fim, redirecionar para visualização dos produtos
     header("location:visualizar.php");
     exit;
