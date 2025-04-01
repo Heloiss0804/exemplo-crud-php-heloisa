@@ -9,6 +9,8 @@ $listaDeFabricantes = listarFabricantes($conexao);
 /*Contando os elementos/registros */
 $quantidade = count($listaDeFabricantes);
 
+
+
 ?>
 
 

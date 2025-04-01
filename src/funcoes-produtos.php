@@ -44,7 +44,20 @@ function inserirProduto(PDO $conexao, string $nome, float $preco, int $quantidad
         die("Erro ao inserir produto: " .$erro->getMessage());
       }
 
-
-
-
 }
+
+function listarUmProduto(PDO $conexao, int $idProduto):array{
+  /* Eu estava tentando selecionar a tabela "produto",e na real era tabela no plural "produtos". */
+  $sql = "SELECT * FROM produtos WHERE id= :id";
+
+  try {
+    $consulta = $conexao->prepare($sql);
+    $consulta->bindValue(":id", $idProduto, PDO::PARAM_INT);
+    $consulta->execute();
+    //Usar somente Fetch para chamar um só linha de registro, não todos como estava antes fetchAll (chama todos os registros constam na tabela)
+    //Usamos o fetch para garantir o retorno de um único array associativo com o resultado
+    return $consulta->fetch(PDO::FETCH_ASSOC);
+ } catch (Exception $erro) {
+   die("Erro ao carregar produto: ".$erro->getMessage());
+ }
+};

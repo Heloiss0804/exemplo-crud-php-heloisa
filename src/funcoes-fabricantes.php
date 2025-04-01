@@ -79,8 +79,6 @@ function atualizarFabricante (PDO $conexao, int $idFabricante, string $nome): vo
       die("Erro ao carregar fabricante: ".$erro->getMessage());
     }
 
-
-
 }
 
 //excluirFabricante: usada em fabricantes/excluir.php
@@ -97,8 +95,5 @@ function excluirFabricante(
   } catch (Exception $erro) {
     die("Erro ao carregar fabricante: ".$erro->getMessage());
   }
-
-
-
 
 }

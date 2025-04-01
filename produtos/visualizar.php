@@ -10,6 +10,7 @@ $quantidade = count($listaDeProdutos);
 
 
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -28,7 +29,7 @@ $quantidade = count($listaDeProdutos);
         <h2>Lendo e carregando todos os produtos.</h2>
 
         <p><a class="btn btn-primary btn-sm" href="inserir.php">Inserir novo produto</a></p>
-
+       
 
 
         <div class="row g-1">
@@ -41,6 +42,7 @@ $quantidade = count($listaDeProdutos);
                     <p><b>Preço: R$  <?=formatarPreco($produto["preco"])?> </b> </p>
                     <p><b>Quantidade: <?=$produto["quantidade"]?> </b></p>
                     <p><b>Total:</b><?=formatarPreco($produto["preco"] * $produto["quantidade"])?></p>
+                    <p> <a class="btn btn-warning btn-sm" href="atualizar.php?id=<?=$produto['id']?>">Atualizar</a></p>
                 </article>
             </div>
 <?php } ?>
