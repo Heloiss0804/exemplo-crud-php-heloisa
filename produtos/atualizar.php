@@ -33,7 +33,7 @@ $produto = listarUmProduto($conexao, $id ) ;
             </div>
             <div class="mb-3">
                 <label class="form-label" for="quantidade">Quantidade:</label>
-                <input values="<?=$produto["quantidade"]?>" class="form-control" type="number" min="1" max="100" name="quantidade" id="quantidade" required>
+                <input value="<?=$produto["quantidade"]?>" class="form-control" type="number" min="1" max="100" name="quantidade" id="quantidade" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="fabricante">Fabricante:</label>
@@ -46,7 +46,7 @@ $produto = listarUmProduto($conexao, $id ) ;
             </div>
             <div class="mb-3">
                 <label class="form-label" for="descricao">Descrição:</label> <br>
-                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3" values="<?=$produto["descricao"]?>"></textarea>
+                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3" ><?=$produto["descricao"]?></textarea>
             </div>
             <button class="btn btn-warning" type="submit" name="atualizar">Atualizar produto</button>
         </form>
