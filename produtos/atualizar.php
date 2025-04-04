@@ -43,13 +43,19 @@ $produto = listarUmProduto($conexao, $id ) ;
                 <select class="form-select" name="fabricante" id="fabricante" required>
                 <option value=""></option>
 
+        <!-- Algoritmo para seleção do fabicante do produto que será editado
+         
+        Se a FK da tabela profuros for igual a PK da tabela fabricantes, ou seja, se io id do fabricante do produto for igual ao id do fabricante, então coloque o atribito "selected" np <option> correspondente.
+        -->
             <?php foreach($listarFabricantes as $fabricante):?>
-                    <option value="<?=$fabricante['id']?>
+                    <option 
+     <?php if($produto['fabricante_id'] === $fabricante['id']) echo " selected " ?> 
+                    value="<?=$fabricante['id']?>
                     "><?=$fabricante['nome']?> </option>
                <?php endforeach ?>
                 
             </select>
-            
+
             </div>
             <div class="mb-3">
                 <label class="form-label" for="descricao">Descrição:</label> <br>
