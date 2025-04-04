@@ -61,3 +61,50 @@ function listarUmProduto(PDO $conexao, int $idProduto):array{
    die("Erro ao carregar produto: ".$erro->getMessage());
  }
 };
+
+
+//Atualizando o produro
+ function atualizarProduto(PDO $conexao, int $idproduto, string $nome, float $preco, int $quantidade, int $idFabricante, string $descricao):void { 
+  $sql = 
+  "UPDATE produtos SET
+   nome = :nome,
+   preco = :preco,
+   quantidade = :quantidade,
+   fabricante_id = :fabricante_id,
+   descricao = :descricao  
+   WHERE id = :id";
+
+      try{
+        $consulta = $conexao->prepare($sql);
+        $consulta ->bindValue (":nome", $nome, PDO::PARAM_STR ) ;
+        $consulta ->bindValue(":preco", $preco, PDO::PARAM_STR);
+        $consulta ->bindValue(":quantidade", $quantidade, PDO::PARAM_INT);
+        $consulta ->bindValue(":fabricante_id", $idFabricante, PDO::PARAM_INT);
+        $consulta ->bindValue(":id", $idproduto, PDO::PARAM_INT);
+        $consulta ->bindValue(":descricao", $descricao, PDO:: PARAM_STR);
+
+        $consulta->execute();
+
+      }
+      catch(Exception $erro){
+        die("Erro ao atualizar produto: " .$erro->getMessage());
+      }
+    }
+
+    //Excluindo produto
+    function excluirProduto(
+      PDO  $conexao, int $idProduto):void {
+      $sql = "DELETE FROM produtos WHERE id = :id";
+    
+      try {
+        $consulta = $conexao->prepare($sql);
+        $consulta->bindValue(":id", $idProduto, PDO::PARAM_INT);
+        $consulta->execute();
+    
+        
+      } catch (Exception $erro) {
+        die("Erro ao excluir produtos: ".$erro->getMessage());
+      }
+    
+    }
+?>
